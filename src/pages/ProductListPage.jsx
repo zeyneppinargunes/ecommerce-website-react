@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
-import ProductList from "../features/list/ProductList";
-import { useDispatch } from "react-redux";
-import { showBackButton } from "../config/store/slices/layoutSlice";
+import ProductList from '@Features/list/ProductList';
+import { showBackButton } from '@Store/slices/layoutSlice';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 function ProductListPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(showBackButton(false))
-  }, [])
+    dispatch(showBackButton(false));
+  }, []);
 
   return <ProductList />;
 }

@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { List } from "antd";
+import { List } from 'antd';
+import { useEffect, useState } from 'react';
 
-import ProductListItem from "./ProductListItem";
-import {
-  LIST_SIZE,
-  useLazyGetAllProductsQuery,
-} from "../../config/api/getmobil";
+import { LIST_SIZE, useLazyGetAllProductsQuery } from '@Api/getmobil';
+import ProductListItem from './ProductListItem';
 
 function ProductList() {
   const [pagination, setPagination] = useState({
@@ -53,8 +50,8 @@ function ProductList() {
         <ProductListItem key={product.id} product={product} />
       )}
       pagination={{
-        position: "bottom",
-        align: "center",
+        position: 'bottom',
+        align: 'center',
         pageSize: currentData?.limit,
         total: currentData?.total,
         current: currentData?.skip / currentData?.limit + 1,
@@ -64,7 +61,7 @@ function ProductList() {
         showLessItems: true,
         hideOnSinglePage: true,
       }}
-      style={{ padding: "0px 8px" }}
+      style={{ padding: '0px 8px' }}
     />
   );
 }

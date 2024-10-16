@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@Pages/*": ["./src/pages/*"],
+      "@Features/*": ["./src/features/*"],
+      "@Store/*": ["./src/config/store/*"],
+      "@Api/*": ["./src/config/api/*"],
+      "@Router/*": ["./src/config/router/*"],
+      "@Layouts/*": ["./src/shared/layouts/*"]
+    }
+  }
+}

@@ -1,11 +1,11 @@
-import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "../../shared/layouts/MainLayout";
-import ProductListPage from "../../pages/ProductListPage";
-import ProductDetailsPage from "../../pages/ProductDetailsPage";
+import MainLayout from '@Layouts/MainLayout';
+import ProductDetailsPage from '@Pages/ProductDetailsPage';
+import ProductListPage from '@Pages/ProductListPage';
+import { createBrowserRouter } from 'react-router-dom';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <MainLayout />,
     children: [
       {
@@ -13,7 +13,7 @@ const router = createBrowserRouter([
         index: true,
       },
       {
-        path: "/:id",
+        path: '/:id',
         element: <ProductDetailsPage />,
       },
     ],

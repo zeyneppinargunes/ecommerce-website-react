@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import ProductDetail from "../features/details/ProductDetail";
-import { useDispatch } from "react-redux";
-import { showBackButton } from "../config/store/slices/layoutSlice";
+import ProductDetail from '@Features/details/ProductDetail';
+import { showBackButton } from '@Store/slices/layoutSlice';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 function ProductDetailsPage() {
   const { id } = useParams();
@@ -10,8 +10,8 @@ function ProductDetailsPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(showBackButton(true))
-  }, [])
+    dispatch(showBackButton(true));
+  }, []);
 
   return <ProductDetail productId={id} />;
 }

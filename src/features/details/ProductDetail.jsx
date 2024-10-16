@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import { useLazyGetSingleProductQuery } from "../../config/api/getmobil";
-import styled from "styled-components";
-import { Col, Row } from "antd";
+import { useLazyGetSingleProductQuery } from '@Api/getmobil';
+import { Col, Row } from 'antd';
+import { useEffect } from 'react';
+import styled from 'styled-components';
 
 function ProductDetail({ productId }) {
   const [getSingleProduct, { data, isLoading, isError, error }] =
@@ -21,7 +21,9 @@ function ProductDetail({ productId }) {
         <p>{data.description}</p>
       </Col>
     </Row>
-  ) : <p>Product not found</p> ;
+  ) : (
+    <p>Product not found</p>
+  );
 }
 
 export default ProductDetail;

@@ -1,9 +1,8 @@
-import React from "react";
-import { Outlet, useNavigate } from "react-router-dom";
-import { Button, Layout, Typography } from "antd";
-import styled from "styled-components";
-import { useSelector } from "react-redux";
-import { ArrowLeftOutlined } from "@ant-design/icons";
+import { ArrowLeftOutlined } from '@ant-design/icons';
+import { Button, Layout, Typography } from 'antd';
+import { useSelector } from 'react-redux';
+import { Outlet, useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
 const { Header, Footer, Content } = Layout;
 const { Title } = Typography;

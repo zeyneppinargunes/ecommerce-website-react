@@ -1,6 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
-import layoutReducer from "./slices/layoutSlice";
-import { getmobilApi } from "../api/getmobil";
+import { getmobilApi } from '@Api/getmobil';
+import { configureStore } from '@reduxjs/toolkit';
+import layoutReducer from './slices/layoutSlice';
 
 const store = configureStore({
   reducer: {
