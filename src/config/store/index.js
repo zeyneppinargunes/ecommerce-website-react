@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./slices/counterSlice";
+import layoutReducer from "./slices/layoutSlice";
 import { getmobilApi } from "../api/getmobil";
 
 const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    layout: layoutReducer,
     [getmobilApi.reducerPath]: getmobilApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>

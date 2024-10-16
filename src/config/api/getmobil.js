@@ -1,17 +1,37 @@
-// Need to use the React-specific entry point to import createApi
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-// Define a service using a base URL and expected endpoints
+export const LIST_SIZE = 10
+
 export const getmobilApi = createApi({
-  reducerPath: 'getmobilApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://pokeapi.co/api/v2/' }),
+  reducerPath: "getmobilApi",
+  baseQuery: fetchBaseQuery({ baseUrl: "https://dummyjson.com" }),
   endpoints: (builder) => ({
-    getPokemonByName: builder.query({
-      query: (name) => `pokemon/${name}`,
+    getAllProducts: builder.query({
+      query: ({ limit = LIST_SIZE, skip }) => {
+        const args = {};
+
+        if (limit) {
+          args["limit"] = limit;
+        }
+
+        if (skip) {
+          args["skip"] = skip;
+        }
+
+        const search = new URLSearchParams(args).toString();
+
+        return `/products` + (search ? `?${search}` : "");
+      },
+    }),
+    getSingleProduct: builder.query({
+      query: (id) => `/products/${id}`,
     }),
   }),
-})
+});
 
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
-export const { useGetPokemonByNameQuery } = getmobilApi
+export const {
+  useGetAllProductsQuery,
+  useLazyGetAllProductsQuery,
+  useGetSingleProductQuery,
+  useLazyGetSingleProductQuery,
+} = getmobilApi;
