@@ -13,6 +13,7 @@ export default defineConfig({
       '@Api': path.resolve(__dirname, './src/config/api'),
       '@Router': path.resolve(__dirname, './src/config/router'),
       '@Layouts': path.resolve(__dirname, './src/shared/layouts'),
+      '@Errors': path.resolve(__dirname, './src/shared/errors'),
     },
   },
 });

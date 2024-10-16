@@ -3,6 +3,8 @@ import { Button, Layout, Typography } from 'antd';
 import { useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import ErrorBoundary from '@Errors/ErrorBoundary';
+import GenericError from '@Errors/GenericError';
 
 const { Header, Footer, Content } = Layout;
 const { Title } = Typography;
@@ -27,7 +29,9 @@ function MainLayout() {
         <StyledTitle level={2}>Get Market</StyledTitle>
       </StyledHeader>
       <StyledContent>
-        <Outlet />
+        <ErrorBoundary fallback={(error) => <GenericError error={error} />}>
+          <Outlet />
+        </ErrorBoundary>
       </StyledContent>
       <Footer>Footer</Footer>
     </Layout>

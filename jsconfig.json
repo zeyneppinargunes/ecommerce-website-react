@@ -6,7 +6,8 @@
       "@Store/*": ["./src/config/store/*"],
       "@Api/*": ["./src/config/api/*"],
       "@Router/*": ["./src/config/router/*"],
-      "@Layouts/*": ["./src/shared/layouts/*"]
+      "@Layouts/*": ["./src/shared/layouts/*"],
+      "@Errors/*": ["./src/shared/errors/*"]
     }
   }
 }
