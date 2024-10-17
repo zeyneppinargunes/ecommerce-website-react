@@ -9,7 +9,7 @@ export const getmobilApi = createApi({
     getAllProducts: builder.query({
       query: ({ limit = LIST_SIZE, skip }) => {
         const args = {
-          delay: 2000,
+          delay: 1000,
         };
 
         if (limit) {

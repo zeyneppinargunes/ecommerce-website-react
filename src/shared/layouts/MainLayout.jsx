@@ -25,6 +25,8 @@ function MainLayout() {
             type="primary"
             icon={<StyledBackIcon />}
             onClick={() => navigate(-1)}
+            role="navigation"
+            aria-label="Back to previous page"
           ></StyledBackButton>
         ) : (
           <></>
@@ -38,7 +40,7 @@ function MainLayout() {
           </Suspense>
         </ErrorBoundary>
       </StyledContent>
-      <Footer>Footer</Footer>
+      <Footer>Getmobil @</Footer>
     </Layout>
   );
 }

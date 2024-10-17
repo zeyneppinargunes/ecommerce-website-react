@@ -66,6 +66,7 @@ function ProductList() {
     <>
       {antDesignNotificationContextHolder}
       <List
+        aria-label="product list"
         grid={{
           gutter: 16,
           xs: 1,
@@ -82,7 +83,11 @@ function ProductList() {
             .map((v, index) => ({ id: index, loading: true }))
         }
         renderItem={(product, index) => (
-          <ProductListItem key={product?.id ?? index} product={product} />
+          <ProductListItem
+            key={product?.id ?? index}
+            tabindex={index}
+            product={product}
+          />
         )}
         pagination={{
           position: 'bottom',

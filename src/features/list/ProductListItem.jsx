@@ -11,8 +11,13 @@ function ProductListItem({ product }) {
   return (
     <List.Item>
       <StyledCard
-        title={<Link to={`/${product.id}`}>{product.title}</Link>}
+        title={
+          <Link to={`/${product.id}`} aria-label="product name">
+            {product.title}
+          </Link>
+        }
         loading={isLoading}
+        aria-label="product"
       >
         {isLoading ? (
           <></>
@@ -20,13 +25,17 @@ function ProductListItem({ product }) {
           <StyledButton
             onClick={() => navigate(`/${product.id}`)}
             variant="text"
+            aria-label="go to product details"
           >
-            <StyledImage src={product.images[0]} />
+            <StyledImage
+              src={product.images[0]}
+              aria-label="product cover image"
+            />
             <StyledInfo>
               <p>
                 {product.brand} - {product.category}
               </p>
-              <p className="price">
+              <p className="price" aria-label="product price">
                 {new Intl.NumberFormat('en-US', {
                   style: 'currency',
                   currency: 'USD',
