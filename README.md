@@ -29,7 +29,17 @@ Open up your terminal and follow these steps:
     $ npm run dev
     ```
 6. Open prompted url in your browser (probably: `http://localhost:5173/`)
----
+#### Testing
+1. If you want to run e2e tests, run this command and it will open up a browser window to show executed tests:
+    ``` shell
+    $ npm run test:e2e
+    ```
+
+2. If you want to run unit tests, run this command and it will prompt tests:
+    ``` shell
+    $ npm run test:unit
+    ```
+#### Building
 If you want to run for production, follow these steps:
 1. Build for production mode
     ``` shell
@@ -42,6 +52,23 @@ If you want to run for production, follow these steps:
 3. Open prompted url in your browser (probably: `http://localhost:4173/`)
 
 ----
-# TODO
-1- vitest
-2- playwright
+#### What can be done more?
+- Search functionality
+  - Add searchbar to menu via layout
+  - Store search value in redux and use it when fetching products
+  - When submitted, redirect to product list page
+- Add to favorites functionality (client side) - (custom hooks)
+  - Add favorite button to details page or product list card
+  - Store selected value in local storage using custom hooks
+  - Always read and match with current listed products
+- Theme
+  - Use ant design & styled-components theme configurations to create alternative themes
+  - Add theme toggle button to menu
+  - Use Context Api to keep track of selected theme
+  - Update via ant design and styled-components config providers
+- Add category filter to product list page
+  - Fetch categories and list as sidebar
+  - When selected, update fetch request accordingly
+- Sort products on product list page (server side)
+  - Add sort selection to right top
+  - When selected, update fetch request accordingly
