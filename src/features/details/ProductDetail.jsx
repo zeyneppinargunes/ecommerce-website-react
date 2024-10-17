@@ -38,10 +38,10 @@ function ProductDetail({ productId }) {
     <>
       {antDesignNotificationContextHolder}
       <Row justify="center" gutter={12}>
-        <Col span={8}>
+        <Col xs={24} md={12} lg={10} xl={8}>
           <StyledImage src={data.images[0]} />
         </Col>
-        <Col span={8}>
+        <Col xs={24} md={12} lg={10} xl={8}>
           <StyledInfo>
             <h3>{data.title}</h3>
             <p>{data.description}</p>
@@ -68,7 +68,7 @@ function ProductDetail({ productId }) {
         </Col>
       </Row>
       <Row justify="center" gutter={12}>
-        <Col span={12}>
+        <Col xs={24} lg={20} xl={16}>
           <Reviews reviews={data.reviews} />
         </Col>
       </Row>
