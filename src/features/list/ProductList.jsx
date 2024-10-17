@@ -1,5 +1,5 @@
 import { List, notification } from 'antd';
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 
 import { LIST_SIZE, useLazyGetAllProductsQuery } from '@Api/getmobil';
 import ProductListItem from './ProductListItem';
@@ -36,6 +36,19 @@ function ProductList() {
     getAllProducts({ limit: pagination?.limit, skip: pagination?.skip });
   }, [pagination]);
 
+  useLayoutEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, []);
+
+  useLayoutEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, [pagination]);
+
   // error handling for api request
   //    to make the api throw error, change limit to a string above
   //    like getAllProducts({ limit: 'asd', skip: pagination?.skip });
@@ -62,10 +75,14 @@ function ProductList() {
           xl: 4,
           xxl: 4,
         }}
-        loading={isLoading}
-        dataSource={currentData?.products ?? []}
-        renderItem={(product) => (
-          <ProductListItem key={product.id} product={product} />
+        dataSource={
+          currentData?.products ??
+          new Array(LIST_SIZE)
+            .fill(null)
+            .map((v, index) => ({ id: index, loading: true }))
+        }
+        renderItem={(product, index) => (
+          <ProductListItem key={product?.id ?? index} product={product} />
         )}
         pagination={{
           position: 'bottom',
@@ -73,7 +90,7 @@ function ProductList() {
           pageSize: currentData?.limit,
           total: currentData?.total,
           current: currentData?.skip / currentData?.limit + 1,
-          pageSizeOptions: [10, 20, 50],
+          pageSizeOptions: [12, 24, 48],
           onShowSizeChange: onPaginationSizeChange,
           onChange: onPageChange,
           showLessItems: true,

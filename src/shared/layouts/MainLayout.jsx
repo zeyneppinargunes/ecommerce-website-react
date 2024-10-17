@@ -1,10 +1,12 @@
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import { Button, Layout, Typography } from 'antd';
 import { useSelector } from 'react-redux';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate, ScrollRestoration } from 'react-router-dom';
 import styled from 'styled-components';
 import ErrorBoundary from '@Errors/ErrorBoundary';
 import GenericError from '@Errors/GenericError';
+import { Suspense } from 'react';
+import PageLoader from './PageLoader';
 
 const { Header, Footer, Content } = Layout;
 const { Title } = Typography;
@@ -16,6 +18,7 @@ function MainLayout() {
 
   return (
     <Layout>
+      <ScrollRestoration />
       <StyledHeader>
         {backButtonVisible ? (
           <StyledBackButton
@@ -30,7 +33,9 @@ function MainLayout() {
       </StyledHeader>
       <StyledContent>
         <ErrorBoundary fallback={(error) => <GenericError error={error} />}>
-          <Outlet />
+          <Suspense fallback={<PageLoader />}>
+            <Outlet />
+          </Suspense>
         </ErrorBoundary>
       </StyledContent>
       <Footer>Footer</Footer>

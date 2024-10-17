@@ -6,9 +6,7 @@ import store from '@Store/index';
 function App() {
   return (
     <StoreProvider store={store}>
-      <RouterProvider router={router}>
-        <App />
-      </RouterProvider>
+      <RouterProvider router={router} />
     </StoreProvider>
   );
 }

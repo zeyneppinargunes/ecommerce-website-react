@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export const LIST_SIZE = 10;
+export const LIST_SIZE = 12;
 
 export const getmobilApi = createApi({
   reducerPath: 'getmobilApi',
@@ -8,7 +8,9 @@ export const getmobilApi = createApi({
   endpoints: (builder) => ({
     getAllProducts: builder.query({
       query: ({ limit = LIST_SIZE, skip }) => {
-        const args = {};
+        const args = {
+          delay: 2000,
+        };
 
         if (limit) {
           args['limit'] = limit;

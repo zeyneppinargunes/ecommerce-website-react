@@ -6,34 +6,80 @@ import styled from 'styled-components';
 function ProductListItem({ product }) {
   const navigate = useNavigate();
 
+  const isLoading = product?.loading;
+
   return (
     <List.Item>
-      <Card title={product.title}>
-        <StyledImage src={product.images[0]} />
-        <p>{product.description}</p>
-        <p>{product.price}</p>
-        {/* <Title>
-          with link:
-          <Link to={`/${product.id}`}>Detail</Link>
-        </Title> */}
-        <StyledButton onClick={() => navigate(`/${product.id}`)}>
-          See details
-        </StyledButton>
-      </Card>
+      <StyledCard
+        title={<Link to={`/${product.id}`}>{product.title}</Link>}
+        loading={isLoading}
+      >
+        {isLoading ? (
+          <></>
+        ) : (
+          <StyledButton
+            onClick={() => navigate(`/${product.id}`)}
+            variant="text"
+          >
+            <StyledImage src={product.images[0]} />
+            <StyledInfo>
+              <p>
+                {product.brand} - {product.category}
+              </p>
+              <p className="price">
+                {new Intl.NumberFormat('en-US', {
+                  style: 'currency',
+                  currency: 'USD',
+                }).format(Number(product.price))}
+              </p>
+              <p>{product.reviews.length} comment(s)</p>
+            </StyledInfo>
+          </StyledButton>
+        )}
+      </StyledCard>
     </List.Item>
   );
 }
 
 export default ProductListItem;
 
-const Title = styled.p`
-  font-weight: bold;
+const StyledCard = styled(Card)`
+  .ant-skeleton {
+    height: 300px;
+  }
+`;
+
+const StyledInfo = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
+  p {
+    margin: 0 !important;
+  }
+  .price {
+    font-weight: bold;
+    color: #1677ff;
+    font-size: 1.4em;
+  }
 `;
 const StyledButton = styled(Button)`
-  font-size: 24px;
+  border: none !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 300px;
+  padding: 0 !important;
+  white-space: break-spaces;
 `;
 
 const StyledImage = styled.img`
-  width: 100%;
-  max-height: 364px;
+  display: block;
+  margin: 0 auto;
+  width: auto;
+  max-width: 200px;
+  height: 180px;
+  margin-bottom: 20px;
 `;
