@@ -4,7 +4,7 @@ export const LIST_SIZE = 12;
 
 export const getmobilApi = createApi({
   reducerPath: 'getmobilApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://dummyjson.com' }),
+  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_URL }),
   endpoints: (builder) => ({
     getAllProducts: builder.query({
       query: ({ limit = LIST_SIZE, skip }) => {
