@@ -1,5 +1,5 @@
 import { List, notification } from 'antd';
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useState } from 'react';
 
 import { LIST_SIZE, useLazyGetAllProductsQuery } from '@Api/getmobil';
 import ProductListItem from './ProductListItem';
@@ -57,10 +57,24 @@ function ProductList() {
       console.log(error);
       antDesignNotificationApi.error({
         message: 'Status Code:' + error.status,
-        description: error.data.message,
+        description: error?.error ?? error?.data?.message,
       });
     }
   }, [isError, error]);
+
+  const dataSource = useMemo(() => {
+    if (error) {
+      return [];
+    }
+
+    if (currentData?.products) {
+      return [...currentData.products];
+    }
+
+    return new Array(LIST_SIZE)
+      .fill(null)
+      .map((v, index) => ({ id: index, loading: true }));
+  }, [error, currentData]);
 
   return (
     <>
@@ -76,12 +90,7 @@ function ProductList() {
           xl: 4,
           xxl: 4,
         }}
-        dataSource={
-          currentData?.products ??
-          new Array(LIST_SIZE)
-            .fill(null)
-            .map((v, index) => ({ id: index, loading: true }))
-        }
+        dataSource={dataSource}
         renderItem={(product, index) => (
           <ProductListItem
             key={product?.id ?? index}

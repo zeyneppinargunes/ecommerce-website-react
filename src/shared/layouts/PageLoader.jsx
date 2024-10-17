@@ -12,8 +12,7 @@ function PageLoader() {
         justifyContent: 'center',
       }}
     >
-      Loading
-      <Spin size="100px" />
+      <Spin />
     </div>
   );
 }

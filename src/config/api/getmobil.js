@@ -7,26 +7,32 @@ export const getmobilApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_URL }),
   endpoints: (builder) => ({
     getAllProducts: builder.query({
-      query: ({ limit = LIST_SIZE, skip }) => {
-        const args = {
-          delay: 1000,
-        };
+      query: ({ limit = LIST_SIZE, skip }) => ({
+        url: (() => {
+          const args = {
+            delay: 1000,
+          };
 
-        if (limit) {
-          args['limit'] = limit;
-        }
+          if (limit) {
+            args['limit'] = limit;
+          }
 
-        if (skip) {
-          args['skip'] = skip;
-        }
+          if (skip) {
+            args['skip'] = skip;
+          }
 
-        const search = new URLSearchParams(args).toString();
+          const search = new URLSearchParams(args).toString();
 
-        return `/products` + (search ? `?${search}` : '');
-      },
+          return `/products` + (search ? `?${search}` : '');
+        })(),
+        timeout: 5000,
+      }),
     }),
     getSingleProduct: builder.query({
-      query: (id) => `/products/${id}`,
+      query: (id) => ({
+        url: `/products/${id}`,
+        timeout: 5000,
+      }),
     }),
   }),
 });

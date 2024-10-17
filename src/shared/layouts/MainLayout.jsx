@@ -61,7 +61,7 @@ const StyledHeader = styled(Header)`
 
 const StyledTitle = styled(Title)`
   margin: 0 !important;
-  color: white;
+  color: white !important;
 `;
 
 const StyledBackButton = styled(Button)`
@@ -69,13 +69,13 @@ const StyledBackButton = styled(Button)`
   left: 1em;
   top: 50%;
   transform: translateY(-50%);
-  color: inherit;
+  color: white !important;
 `;
 
 const StyledBackIcon = styled(ArrowLeftOutlined)`
   & > svg {
-    width: 1.33em;
-    height: 1.33em;
+    width: 1.5em;
+    height: 1.5em;
   }
 `;
 
