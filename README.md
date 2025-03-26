@@ -12,7 +12,7 @@ Open up your terminal and follow these steps:
     ``` shell
     $ git clone https://github.com/ZeynepPinarKaya/ecommerce-website-react.git
     ```
-2. Change directory into created `getmobil-case-study`
+2. Change directory into created `ecommerce-website-react`
     ``` shell
     $ cd getmobil-case-study
     ```
