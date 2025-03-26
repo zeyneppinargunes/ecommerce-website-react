@@ -10,7 +10,7 @@ Please make sure these are installed on your system:
 Open up your terminal and follow these steps:
 1. Clone this repo
     ``` shell
-    $ git clone https://github.com/ZeynepPinarKaya/getmobil-case-study.git
+    $ git clone https://github.com/ZeynepPinarKaya/ecommerce-website-react.git
     ```
 2. Change directory into created `getmobil-case-study`
     ``` shell
